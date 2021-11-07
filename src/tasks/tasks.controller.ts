@@ -10,9 +10,9 @@ export class TasksController {
 
     @Get()
     getTasks(@Query() searchTaskByFilter: SearchTaskByFilter): Task[] {
-        if(Object.keys(searchTaskByFilter).length){
+        if (Object.keys(searchTaskByFilter).length) {
             return this.taskService.getTaskWithFilters(searchTaskByFilter);
-        }else{
+        } else {
             return this.taskService.getAllTasks();
         }
     }
@@ -33,7 +33,7 @@ export class TasksController {
     }
 
     @Patch('/:id/status')
-    updateStatus(@Param('id') id: string,@Body('status') status: TaskStatus): Task {
+    updateStatus(@Param('id') id: string, @Body('status') status: TaskStatus): Task {
         return this.taskService.updateStatus(id, status);
     }
 }
